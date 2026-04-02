@@ -62,6 +62,14 @@ const dashboardItems = [
     icon: <FileText className="text-yellow-500" size={32} />,
     link: 'https://hyeoksin-youtube.fragrant-flower-7056.workers.dev'
   },
+  {
+    id: 5,
+    category: 'management',
+    title: '혁신 제안서 AI',
+    description: '축산 관련 혁신 아이디어를 체계적인 제안서 형태로 자동 생성해주는 서비스입니다.',
+    icon: <FileText className="text-yellow-500" size={32} />,
+    link: 'https://hyeoksin-proposal.fragrant-flower-7056.workers.dev/'
+  },
 ];
 
 export default function App() {
