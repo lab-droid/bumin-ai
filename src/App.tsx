@@ -54,12 +54,22 @@ const dashboardItems = [
     icon: <FileText className="text-yellow-500" size={32} />,
     link: 'https://hyeoksin-insta.fragrant-flower-7056.workers.dev/'
   },
+  {
+    id: 4,
+    category: 'marketing',
+    title: '혁신 유튜브 AI',
+    description: '축산 관련 정보를 유튜브 영상으로 자동 생성해주는 서비스입니다.',
+    icon: <FileText className="text-yellow-500" size={32} />,
+    link: 'https://hyeoksin-youtube.fragrant-flower-7056.workers.dev'
+  },
 ];
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHowToOpen, setIsHowToOpen] = useState(false);
+  const [isFaqOpen, setIsFaqOpen] = useState(false);
 
   const filteredItems = dashboardItems.filter(item => {
     const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
@@ -85,11 +95,14 @@ export default function App() {
           
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
             <a href="#" className="hover:text-white transition-colors">홈</a>
-            <a href="#" className="hover:text-white transition-colors">FQA</a>
+            <button onClick={() => setIsFaqOpen(true)} className="hover:text-white transition-colors">FAQ</button>
           </nav>
 
           <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white transition-all">
+            <button 
+              onClick={() => setIsHowToOpen(true)}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white transition-all"
+            >
               <Info size={14} className="text-yellow-500" />
               <span>사용방법</span>
             </button>
@@ -276,6 +289,65 @@ export default function App() {
                   확인
                 </button>
               </div>
+            </motion.div>
+          </div>
+        )}
+        {isHowToOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsHowToOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-[#121212] border border-white/10 rounded-3xl p-8 shadow-2xl"
+            >
+              <h3 className="text-xl font-bold mb-6">부민축산 AI 사용방법</h3>
+              <div className="text-gray-400 text-sm leading-relaxed mb-8 space-y-4">
+                <p>1. 대시보드에서 필요한 AI 서비스를 선택합니다.</p>
+                <p>2. '바로가기' 버튼을 클릭하여 해당 서비스로 이동합니다.</p>
+                <p>3. 각 서비스에서 제공하는 기능을 활용하여 업무 효율을 높입니다.</p>
+              </div>
+              <button
+                onClick={() => setIsHowToOpen(false)}
+                className="w-full py-4 rounded-2xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition-colors"
+              >
+                닫기
+              </button>
+            </motion.div>
+          </div>
+        )}
+        {isFaqOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsFaqOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-[#121212] border border-white/10 rounded-3xl p-8 shadow-2xl"
+            >
+              <h3 className="text-xl font-bold mb-6">자주 묻는 질문 (FAQ)</h3>
+              <div className="text-gray-400 text-sm leading-relaxed mb-8 space-y-4">
+                <p><strong>Q: 부민축산 AI란 무엇인가요?</strong><br/>A: 부민축산의 업무 효율을 극대화하기 위한 AI 통합 대시보드입니다.</p>
+                <p><strong>Q: 서비스 이용료는 어떻게 되나요?</strong><br/>A: 부민축산 임직원 전용 서비스로 무료로 제공됩니다.</p>
+              </div>
+              <button
+                onClick={() => setIsFaqOpen(false)}
+                className="w-full py-4 rounded-2xl bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition-colors"
+              >
+                닫기
+              </button>
             </motion.div>
           </div>
         )}
