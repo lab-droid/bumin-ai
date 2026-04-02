@@ -70,6 +70,14 @@ const dashboardItems = [
     icon: <FileText className="text-yellow-500" size={32} />,
     link: 'https://hyeoksin-proposal.fragrant-flower-7056.workers.dev/'
   },
+  {
+    id: 6,
+    category: 'marketing',
+    title: '혁신 유튜브 썸네일 AI',
+    description: '유튜브 영상의 클릭률을 높여주는 매력적인 썸네일을 AI가 자동으로 생성해주는 서비스입니다.',
+    icon: <FileText className="text-yellow-500" size={32} />,
+    link: 'https://hyeoksin-youtube-thumbnail.vercel.app'
+  },
 ];
 
 export default function App() {
