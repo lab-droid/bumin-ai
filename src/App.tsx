@@ -46,6 +46,14 @@ const dashboardItems = [
     icon: <FileText className="text-yellow-500" size={32} />,
     link: 'https://hyeoksin-sangsepage.fragrant-flower-7056.workers.dev'
   },
+  {
+    id: 3,
+    category: 'marketing',
+    title: '혁신 카드뉴스 AI',
+    description: '축산 관련 소식을 시각적으로 매력적인 카드뉴스 형태로 자동 생성해주는 서비스입니다.',
+    icon: <FileText className="text-yellow-500" size={32} />,
+    link: 'https://hyeoksin-insta.fragrant-flower-7056.workers.dev/'
+  },
 ];
 
 export default function App() {
